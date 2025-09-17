@@ -19,6 +19,7 @@ class CostmapNode : public rclcpp::Node {
     robot::CostmapCore costmap_;
     // Place these constructs here
     rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr lidar_sub_;
+    rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr costmap_pub_;
     rclcpp::Publisher<nav_msgs::msg::OccupancyGrid>::SharedPtr grid_pub_;
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr string_pub_;
     rclcpp::TimerBase::SharedPtr timer_;
