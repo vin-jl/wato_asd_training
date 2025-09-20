@@ -40,7 +40,6 @@ void MapMemoryNode::timerCallback() {
 
   updateMap();
   global_map_.header.stamp = this->now();
-  global_map_.header.frame_id = "sim_world";
   map_pub_->publish(global_map_);
 
   update_map_ = false;
@@ -51,7 +50,7 @@ void MapMemoryNode::costmapCallback(const nav_msgs::msg::OccupancyGrid::SharedPt
   latest_costmap_ = *msg;
   costmap_updated_ = true;
   //RCLCPP_INFO(this->get_logger(), "Received costmap: %dx%d, resolution: %f", 
-              msg->info.width, msg->info.height, msg->info.resolution);
+  //            msg->info.width, msg->info.height, msg->info.resolution);
 }
 
 void MapMemoryNode::odomCallback(const nav_msgs::msg::Odometry::SharedPtr msg) {
@@ -72,7 +71,7 @@ void MapMemoryNode::odomCallback(const nav_msgs::msg::Odometry::SharedPtr msg) {
   theta_ = yaw;
 
   //RCLCPP_INFO(this->get_logger(), "Robot moved %.2fm, updating map at (%.2f, %.2f)", 
-              dist, robot_x_, robot_y_);
+  //            dist, robot_x_, robot_y_);
   update_map_ = true;
 }
 
