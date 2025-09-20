@@ -9,11 +9,11 @@ CostmapNode::CostmapNode() : Node("costmap"), costmap_(robot::CostmapCore(this->
   lidar_sub_ = this->create_subscription<sensor_msgs::msg::LaserScan>("/lidar", 10, std::bind(&CostmapNode::laserCallback, this, std::placeholders::_1));
   costmap_pub_ = this->create_publisher<nav_msgs::msg::OccupancyGrid>("/costmap", 10);
   string_pub_ = this->create_publisher<std_msgs::msg::String>("/test_topic", 10);
-  timer_ = this->create_wall_timer(std::chrono::milliseconds(500), std::bind(&CostmapNode::publishMessage, this));
+  timer_ = this->create_wall_timer(std::chrono::milliseconds(5000), std::bind(&CostmapNode::publishMessage, this));
 
 }
  
-// Define the timer to publish a message every 500ms
+// Define the timer to publish a message every 5000ms
 void CostmapNode::publishMessage() {
   auto message = std_msgs::msg::String();
   message.data = "Hello, ROS 2!";
@@ -73,6 +73,7 @@ void CostmapNode::laserCallback(const sensor_msgs::msg::LaserScan::SharedPtr sca
       occupancyGrid.data[j * WIDTH + i] = costMap[i][j];
     }
   }
+  //publish
   costmap_pub_->publish(occupancyGrid);
 }
 

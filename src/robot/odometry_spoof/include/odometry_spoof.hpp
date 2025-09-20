@@ -1,4 +1,4 @@
-#ifndef ODOMETRY_SPOOF_NODE_HPP_
+#ifndef MY_HEADER_H
 #define ODOMETRY_SPOOF_NODE_HPP_
 
 #include "rclcpp/rclcpp.hpp"
