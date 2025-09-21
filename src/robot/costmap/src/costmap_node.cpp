@@ -25,7 +25,8 @@ void CostmapNode::laserCallback(const sensor_msgs::msg::LaserScan::SharedPtr sca
   const double RES = 0.1;
   const int WIDTH = 30/RES, HEIGHT = 30/RES;
   const int MAX_COST = 100;
-  const int INFLATION_RADIUS = 1/RES;
+  const double INFLATION_RADIUS = 3;
+
   std::vector<std::vector<int>> costMap(WIDTH, std::vector<int>(HEIGHT, 0));
 
   for (size_t i = 0; i < scan->ranges.size(); ++i) {
